@@ -1,0 +1,26 @@
+Creating a prime number generator can be a challenging yet rewarding project. Here's a Python implementation using the Sieve of Eratosthenes algorithm:
+
+```python
+def sieve_of_eratosthenes(n):
+    """Generate all prime numbers up to n using Sieve of Eratosthenes."""
+    primes = [True] * (n + 1)
+    primes[0], primes[1] = False, False  # 0 and 1 are not primes
+
+    p = 2
+    while p * p <= n:
+        if primes[p]:
+            for i in range(p * p, n + 1, p):
+                primes[i] = False
+        p += 1
+
+    return [i for i in range(2, n + 1) if primes[i]]
+
+# Example usage:
+n = int(input("Enter the upper limit for prime numbers generation: "))
+print("Prime numbers up to", n, "are:")
+print(sieve_of_eratosthenes(n))
+```
+
+This program efficiently generates all prime numbers up to a given limit `n` using the Sieve of Eratosthenes algorithm. It initializes a list of boolean values indicating whether each number is prime or not. It then iterates through the numbers from 2 to the square root of `n`, marking multiples of each prime number as non-prime. Finally, it collects and returns the prime numbers from the list.
+
+You can further enhance this program by adding error handling for invalid input, optimizing memory usage for larger values of `n`, or implementing parallelization techniques for faster execution. Additionally, you can explore different prime generation algorithms and compare their performance.
